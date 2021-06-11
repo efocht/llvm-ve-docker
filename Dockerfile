@@ -13,7 +13,7 @@ RUN             yum -y install $RELEASE_RPM ; \
                 rm /tmp/*.repo /tmp/*.rpm ; \
                 yum clean all 
 #RUN             yum -y group install ve-container nec-sdk-runtime ; \
-RUN             yum -y install llvm-ve-rv-1.8.0
-ADD		llvmvervvars.sh /usr/local/ve/llvm-ve-rv-1.8.0/bin
+RUN             yum -y install llvm-ve-1.20.0 llvm-ve-link-1.20.0
+ADD		llvmvervvars.sh /opt/nec/nosupport
 #ENV            LOG4C_RCPATH=/etc/opt/nec/ve/veos
 CMD             ["/bin/bash"]

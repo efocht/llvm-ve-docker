@@ -3,7 +3,7 @@
 ## Build
 
 ```
-docker build --network host --tag llvm-ve-rv:1.8.0 .
+docker build --network host --tag llvm-ve:1.20.0 .
 ```
 
 
