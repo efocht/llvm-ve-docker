@@ -1,5 +1,7 @@
-FROM            centos:8.2.2004
+FROM            centos:8.3.2011
 MAINTAINER      efocht
+ENV             LLVM_VE_TAR_DIR=https://sx-aurora.com/repos/llvm/tars
+ENV             LLVM_VE_TAR_NAME=llvm-ve-rv-1.9b3.tar.gz
 ADD             dnf.conf /etc/dnf
 ADD             CentOS-Base.repo /etc/yum.repos.d
 ADD             CentOS-Extras.repo /etc/yum.repos.d
@@ -11,9 +13,11 @@ ARG             RELEASE_RPM=/tmp/TSUBASA-soft-release-*.noarch.rpm
 RUN             yum -y install $RELEASE_RPM ; \
                 cp /tmp/*.repo /etc/yum.repos.d ; \
                 rm /tmp/*.repo /tmp/*.rpm ; \
-                yum clean all 
+                yum clean all ; yum -y install wget ; \
+                mkdir -p /usr/local/ve ; \
+                wget ${LLVM_VE_TAR_DIR}/${LLVM_VE_TAR_NAME} && \
+                tar -xzf ${LLVM_VE_TAR_NAME} ; rm -f ${LLVM_VE_TAR_NAME}
 #RUN             yum -y group install ve-container nec-sdk-runtime ; \
-RUN             yum -y install llvm-ve-rv-1.8.0
-ADD		llvmvervvars.sh /usr/local/ve/llvm-ve-rv-1.8.0/bin
+ADD		llvmvervvars.sh /usr/local/ve/${LLVM_VE_TAR_NAME}/bin
 #ENV            LOG4C_RCPATH=/etc/opt/nec/ve/veos
 CMD             ["/bin/bash"]

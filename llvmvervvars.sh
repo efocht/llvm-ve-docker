@@ -1,5 +1,5 @@
 LLVM_INSTALL=`realpath $(dirname -- "$BASH_SOURCE")/..`
-#LLVM_INSTALL=/usr/local/ve/llvm-ve-rv-1.8.0
+#LLVM_INSTALL=/usr/local/ve/llvm-ve-rv-1.9b3
         
 ### configure common paths ###
 export CPATH=${LLVM_INSTALL}/include:${CPATH}
