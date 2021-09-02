@@ -3,7 +3,7 @@
 ## Build
 
 ```
-docker build --network host --tag llvm-ve-rv:1.9b3 .
+docker build --network host --tag efocht/llvm-ve-rv:1.9b3 .
 ```
 
 
