@@ -1,11 +1,9 @@
 FROM            efocht/ve-base-dev:veos2.8.3
 MAINTAINER      efocht
-ENV             LLVM_VE_TAR_DIR=https://sx-aurora.com/repos/llvm/tars
-ENV             LLVM_VE_NAME=llvm-ve-rv-1.9b3
-# download and install llvm-ve-rv tarball
-RUN             wget ${LLVM_VE_TAR_DIR}/${LLVM_VE_NAME}-el8.tar.gz && \
-                tar -xzf ${LLVM_VE_NAME}-el8.tar.gz ; rm -f ${LLVM_VE_NAME}-el8.tar.gz; \
-                ln -s /usr/local/ve/${LLVM_VE_NAME} /usr/local/ve/llvm-ve
-ADD		llvmvervvars.sh /usr/local/ve/${LLVM_VE_NAME}/bin
+#ENV             LLVM_VE_LOC=https://sx-aurora.com/repos/llvm/x86_64
+ENV             LLVM_VE_NAME=llvm-ve-rv-1.9.0-1.9.0-1.el8
+RUN             yum -y install ${LLVM_VE_NAME} ; \
+                  yum clean all; rm -rf /var/cache/yum/* ; \
+                  ln -s /usr/local/ve/llvm-ve-rv-1.9.0 /usr/local/ve/llvm
 #ENV            LOG4C_RCPATH=/etc/opt/nec/ve/veos
 CMD             ["/bin/bash"]
