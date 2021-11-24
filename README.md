@@ -3,7 +3,7 @@
 ## Build
 
 ```
-LLVMVER=1.9.0
+LLVMVER=2.0.0
 docker build --network host --tag efocht/llvm-ve-rv:$LLVMVER .
 
 # tag as 'latest', if you like
